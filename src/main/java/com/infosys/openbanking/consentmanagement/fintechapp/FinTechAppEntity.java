@@ -1,10 +1,10 @@
 package com.infosys.openbanking.consentmanagement.fintechapp;
 
-import kalix.javasdk.annotations.EntityKey;
-import kalix.javasdk.annotations.EntityType;
-import kalix.javasdk.annotations.EventHandler;
 import kalix.javasdk.eventsourcedentity.EventSourcedEntity;
 import kalix.javasdk.eventsourcedentity.EventSourcedEntityContext;
+import kalix.springsdk.annotations.EntityKey;
+import kalix.springsdk.annotations.EntityType;
+import kalix.springsdk.annotations.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import java.time.Instant;
 @EntityKey("finTechAppId")
 @EntityType("finTechApp")
 @RequestMapping("/fintechapp/{finTechAppId}")
-public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,FinTechAppEntity.Event> {
+public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State> {
     private static final Logger logger = LoggerFactory.getLogger(FinTechAppEntity.class);
 
     public interface Event{

@@ -1,6 +1,6 @@
 package com.infosys.openbanking.consentmanagement;
 
-import kalix.javasdk.annotations.Acl;
+import kalix.springsdk.annotations.Acl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
