@@ -38,7 +38,6 @@ public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,
 
     public interface Api{
         record ValidRequest(Instant validTillTimestamp)implements Api{}
-        record InvalidRequest()implements Api{}
         record GetResponse(boolean valid, Instant validTillTimestamp) implements Api{}
     }
 
@@ -62,8 +61,8 @@ public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,
     }
 
     @PostMapping("/invalid")
-    public Effect<String> invalid(@RequestBody  Api.ValidRequest request){
-        logger.info("invalid [{}] -> is already valid: {} -> request: {}",finTechAppId, currentState().valid, request);
+    public Effect<String> invalid(){
+        logger.info("invalid [{}] -> is already valid: {}",finTechAppId, currentState().valid);
         if(currentState().valid)
             return effects().emitEvent(new FinTechAppEntity.Event.Invalidated(finTechAppId,Instant.now())).thenReply(updatedState -> RESPONSE_OK);
         else
@@ -80,6 +79,7 @@ public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,
     public FinTechAppEntity.State onValidated(Event.Validated event){
         return currentState().onValidatedEvent(event);
     }
+    @EventHandler
     public FinTechAppEntity.State onInvalidated(Event.Invalidated event){
         return currentState().onInvalidatedEvent(event);
     }

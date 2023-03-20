@@ -74,36 +74,6 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <!-- run Integration Tests in src/it/java with `mvn verify -Pit`-->
-            <id>it</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <!-- run *IntegrationTest with failsafe -->
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.2</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                                <configuration>
-                                    <includes>
-                                        <include>**/*IntegrationTest</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
     <dependencies>
         <dependency>
             <groupId>io.kalix</groupId>
@@ -120,13 +90,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.5.2</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.5.2</version>
+            <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
 
