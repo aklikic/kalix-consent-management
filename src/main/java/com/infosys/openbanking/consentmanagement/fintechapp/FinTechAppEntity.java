@@ -25,6 +25,9 @@ public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,
         record Invalidated(String finTechAppId, Instant timestamp) implements  Event{}
     }
     public record State(boolean valid, Instant lastValidatedTimestamp, Instant validTillTimestamp){
+        public static State empty(){
+            return new State(false, null, null);
+        }
         public State onValidatedEvent(Event.Validated event){
             return new State(true,event.timestamp(), event.validTillTimestamp());
         }
@@ -45,6 +48,11 @@ public class FinTechAppEntity extends EventSourcedEntity<FinTechAppEntity.State,
 
     public FinTechAppEntity(EventSourcedEntityContext context) {
         this.finTechAppId = context.entityId();
+    }
+
+    @Override
+    public State emptyState() {
+        return State.empty();
     }
 
     @PostMapping("/valid")

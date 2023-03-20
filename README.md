@@ -23,4 +23,9 @@ Run docker-compose:
 ```
 docker-compose up
 ```
-### Run Kalix project docker compose
+## Test
+```
+curl -XPOST -d '{ 
+  "validTillTimestamp": "2023-11-16T20:00:00.000Z"
+}' http://localhost:9000/fintechapp/1/valid -H "Content-Type: application/json"
+```
