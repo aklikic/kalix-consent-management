@@ -1,6 +1,6 @@
 # Consent management Kalix project
 
-Instructions how to build a Kalix SDK project uber jar, build and run in it docker container on Linux machine. 
+Instructions how to build a Kalix SDK project uber jar on developer machine and build and run it using docker on Linux machine. 
 # Developer machine
 ## Prerequisite
 Java 17<br>
